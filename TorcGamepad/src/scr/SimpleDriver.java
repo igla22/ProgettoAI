@@ -82,12 +82,16 @@ public class SimpleDriver extends Controller {
    /* private final int[] gearUp = {9500, 10000, 12000, 13000, 14000, 0};    // RPM per salire
     private final int[] gearDown = {8500, 9000, 9200, 9500, 10000, 10000};  // RPM per scendere*/
     
-    private final int[] gearUp = {6000, 7000, 8000, 12000, 14000, 0};       // Salita ultra-rapida alle marce alte
-    private final int[] gearDown = {1000, 2000, 5000, 7000, 10000, 12000}; // Soglie di discesa rialzate
+  /*  private final int[] gearUp = {6000, 7000, 8000, 12000, 14000, 0};       // Salita ultra-rapida alle marce alte
+    private final int[] gearDown = {1000, 2000, 5000, 7000, 10000, 12000}; // Soglie di discesa rialzate */
+    
+      //Perfetto per la F1
+    private final int[] gearUp = {19000, 19500, 19500, 19500, 19500, 0};       // Salita ultra-rapida alle marce alte
+    private final int[] gearDown = {4000, 5000, 11500, 13000, 14000, 15000}; // Soglie di discesa rialzate
     
     // Parametri configurabili
     private final float STEERING_SMOOTHING = 0.1f;    // Più basso = più fluido
-    private final float STEERING_SENSITIVITY = 0.3f;  // Più basso = meno sensibile agli input alti
+    private final float STEERING_SENSITIVITY = 0.5f;  // Più basso = meno sensibile agli input alti
     private final float STEERING_DEADZONE = 0.02f;
     private final float ACCEL_SMOOTHING = 0.2f;
     private final float ACCEL_CURVE = 0.1f;
