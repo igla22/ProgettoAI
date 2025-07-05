@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 import scr.GamepadHandler;
 
 public class SimpleDriver extends Controller {
@@ -102,10 +103,20 @@ public class SimpleDriver extends Controller {
     }
 
     public void shutdown() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Bye bye!");
-        System.out.println("Inisio Salvataggio");
-        this.salvaCSV();
-        System.out.println("Fine Salvataggio");
+        System.out.println("Vuoi salvare i dati della gara ? y/N");
+        String risposta;
+        do {
+            System.out.println("Vuoi salvare i dati della gara? y/N");
+            risposta = scanner.nextLine();
+        } while (!risposta.equalsIgnoreCase("y") && !risposta.equalsIgnoreCase("n"));
+
+        if (risposta.equalsIgnoreCase("y")) {
+            System.out.println("Inizio Salvataggio");
+            this.salvaCSV();
+            System.out.println("Fine Salvataggio");
+        }      
     }
 
     private int getGear(SensorModel sensors) {
