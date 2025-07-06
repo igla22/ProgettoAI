@@ -48,9 +48,12 @@ public class SimpleDriver extends Controller {
                 sensor.getGear()
             ));
             
-            csv.append(String.format(Locale.US, "%.4f;", track[5])); //-40
+            for ( Double i: track )
+                csv.append(String.format(Locale.US, "%.4f;", i));
+            
+           /* csv.append(String.format(Locale.US, "%.4f;", track[5])); //-40
             csv.append(String.format(Locale.US, "%.4f;", track[9])); // 0
-            csv.append(String.format(Locale.US, "%.4f;", track[13])); // 40
+            csv.append(String.format(Locale.US, "%.4f;", track[13])); // 40 */
             //for (double val : track) csv.append(String.format(Locale.US, "%.4f;", val));
             //for (double val : focus) csv.append(String.format(Locale.US, "%.4f;", val));
             //for (double val : opponents) csv.append(String.format(Locale.US, "%.4f;", val));
@@ -238,13 +241,18 @@ public class SimpleDriver extends Controller {
 
     public void salvaCSV(){
         SensorModel sensor = l.getFirst().getSensor();
+        String lableTrack ="";
+        for(int i=0; i<sensor.getTrackEdgeSensors().length; i++){
+            lableTrack += "trackEdge"+i+";";
+        }  
+            
         //double[] track = sensor.getTrackEdgeSensors();
         //double[] focus = sensor.getFocusSensors();
         //double[] opponents = sensor.getOpponentSensors();
         //double[] wheels = sensor.getWheelSpinVelocity();
         // Intestazione CSV (una volta sola, all'inizio)
         //String header = "speed;angleToTrack;trackPos;gear;racePos;lateralSpeed;currentLapTime;damage;distanceFromStartLine;distanceRaced;fuel;lastLapTime;rpm;zSpeed;z;message";
-        String header = "speed;angleToTrack;trackPos;lateralSpeed;RPM;gear;trackEdge-45°;trackEdge0°;trackEdge45°;accelerate;brake;clutch;focus;gear;steering";
+        String header = "speed;angleToTrack;trackPos;lateralSpeed;RPM;gear_presente;"+lableTrack+"accelerate;brake;clutch;focus;gear_futura;steering";
 
         //for (int i = 0; i < track.length; i++) header += "trackEdge;" + i;
         //for (int i = 0; i < focus.length; i++) header += "focus;" + i;
