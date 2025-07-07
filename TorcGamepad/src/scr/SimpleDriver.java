@@ -1,6 +1,7 @@
 package scr;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -263,13 +264,15 @@ public class SimpleDriver extends Controller {
             corpo.append(f.toString()+"\n");
         }
             
-         try(BufferedWriter writer = new BufferedWriter(new FileWriter("../DataSet.csv",true))){
-            
-             writer.write(header+"\n");
-             writer.write(corpo.toString());
-            
+         File file = new File("../DataSet.csv");
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+            if (!file.exists() || file.length() == 0) {
+                writer.write(header + "\n");
+            }
+            writer.write(corpo.toString());
         } catch (IOException ex) {
             System.getLogger(SimpleDriver.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        } 
+        }
     }
 }
