@@ -91,7 +91,7 @@ public class SimpleDriver extends Controller {
     
       //Perfetto per la F1
     private final int[] gearUp = {19000, 19500, 19500, 19500, 19500, 0};       // Salita ultra-rapida alle marce alte
-    private final int[] gearDown = {4000, 5000, 11500, 13000, 14000, 15000}; // Soglie di discesa rialzate
+    private final int[] gearDown = {10000, 11000, 12000, 13000, 14000, 15000}; // Soglie di discesa rialzate
     
     // Parametri configurabili
     private final float STEERING_SMOOTHING = 0.1f;    // Più basso = più fluido
