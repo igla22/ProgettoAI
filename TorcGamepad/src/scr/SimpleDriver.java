@@ -63,10 +63,10 @@ public class SimpleDriver extends Controller {
             
             csv.append(String.format(
                 Locale.US,
-                "%.4f;%.4f;%.4f;%d;%.4f",
+                "%.4f;%.4f;%d;%.4f",
                 action.accelerate,
                 action.brake,
-                action.clutch,
+               // action.clutch,
                 action.gear,
                 action.steering
             ));
@@ -235,6 +235,16 @@ public class SimpleDriver extends Controller {
     action.gear = getGear(sensors);
     action.clutch = clutch;
     
+    
+    System.out.println("/** Freno:"
+                + ""
+                + action.brake
+                + ""
+                + ""
+                + "clutch"
+                + action.clutch
+                + "***/");
+    
     l.add(new Feature(sensors, action));
     return action;
     }
@@ -252,7 +262,7 @@ public class SimpleDriver extends Controller {
         //double[] wheels = sensor.getWheelSpinVelocity();
         // Intestazione CSV (una volta sola, all'inizio)
         //String header = "speed;angleToTrack;trackPos;gear;racePos;lateralSpeed;currentLapTime;damage;distanceFromStartLine;distanceRaced;fuel;lastLapTime;rpm;zSpeed;z;message";
-        String header = "speed;angleToTrack;trackPos;lateralSpeed;RPM;gear_presente;"+lableTrack+"accelerate;brake;clutch;gear_futura;steering";
+        String header = "speed;angleToTrack;trackPos;lateralSpeed;RPM;gear_presente;"+lableTrack+"accelerate;brake;gear_futura;steering";
 
         //for (int i = 0; i < track.length; i++) header += "trackEdge;" + i;
         //for (int i = 0; i < focus.length; i++) header += "focus;" + i;
